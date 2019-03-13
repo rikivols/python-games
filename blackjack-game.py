@@ -1,3 +1,10 @@
+"""
+Blackjack game, where player plays against bot. Bot is very simple right now. At start you get 2 cards and you
+can either hit (take a new card) or stay (ends the game, bot is on move). If your deck exceeds 21, you always
+lose no matter what cards bot had. If bot's deck exceeds 21, you win. If no one's deck exceeds 21, the player
+with higher deck value wins.
+"""
+
 from random import choice
 
 
