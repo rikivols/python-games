@@ -55,9 +55,10 @@ class Deck:
         :return: updates player_deck_val and bot_deck_val
         """
 
-        # prevent having card already used
+        # create a new card
         while True:
             card = Card()
+            # prevent having card already used
             if card.get_card() not in self.player_cards and card.get_card() not in self.bot_cards:
                 break
 
@@ -182,7 +183,6 @@ def play_game(num_of_player_wins, num_of_bot_wins):
         player.print_cards()
 
         if player.check_lose():  # check if player's deck exceeded 21 (he lost)
-            player.print_cards()
             num_of_bot_wins += 1
             print("Player's deck exceeded 21, bot won the game")
             end_game()
@@ -200,7 +200,9 @@ def play_game(num_of_player_wins, num_of_bot_wins):
 
             if bot.check_lose():  # check if bot's deck exceeded 21 (he lost)
                 num_of_player_wins += 1
-                print("Bot's deck exceeded 21, bot won the game")
+                print("Bot cards:")
+                bot.print_cards()
+                print("Bot's deck exceeded 21, player won the game")
                 end_game()
                 return num_of_player_wins, num_of_bot_wins
 
@@ -232,3 +234,6 @@ if __name__ == '__main__':
         if end == "yes" or end == "y":
             num_of_player_wins, num_of_bot_wins = play_game(num_of_player_wins, num_of_bot_wins)
         end = input("Continue playing? y / n: ").lower().strip()
+    print("\nThank you for playing the game!")
+
+        
